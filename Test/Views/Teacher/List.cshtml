@@ -1,0 +1,14 @@
+﻿
+@model IEnumerable<Test.Models.Teacher>
+@{
+    ViewBag.Title = "List";
+}
+<!--Frankly still don't understand ViewBag-->
+
+<h2>List</h2>
+<!-- a loop that goes and shows every teacher. make the name a link to the individuals info page-->
+@foreach(var teacher in Model){
+    <div>
+        <a href="/teacher/show/@teacher.teacherid">@teacher.teacherfname @teacher.teacherlname</a>
+    </div>
+}
