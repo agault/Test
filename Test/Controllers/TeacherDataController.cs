@@ -33,15 +33,15 @@ namespace Test.Controllers
                 DateTime HireDate = (DateTime)ResultSet["hiredate"];//try Date time, its in the footer folder and I think its what is needed
                 decimal Salary = (decimal)ResultSet["salary"];
 
-                Teacher NewTeacher = new Teacher();
-                NewTeacher.teacherid = TeacherId;
-                NewTeacher.teacherfname = AuthorFname;
-                NewTeacher.teacherlname = AuthorLname;
-                NewTeacher.employeenumber = EmployeeNumber;
-                NewTeacher.hireDate = HireDate;
-                NewTeacher.salary = Salary;
+                Teacher FindTeacher = new Teacher();
+                FindTeacher.teacherid = TeacherId;
+                FindTeacher.teacherfname = AuthorFname;
+                FindTeacher.teacherlname = AuthorLname;
+                FindTeacher.employeenumber = EmployeeNumber;
+                FindTeacher.hireDate = HireDate;
+                FindTeacher.salary = Salary;
 
-                Teachers.Add(NewTeacher);
+                Teachers.Add(FindTeacher);
             }
             conn.Close();
             return Teachers;
@@ -50,7 +50,7 @@ namespace Test.Controllers
         [HttpGet]
         public Teacher FindTeacher(int id)//use teacher id to fine all of their relevant info
         {
-            Teacher NewTeacher = new Teacher();
+            Teacher FindTeacher = new Teacher();
             MySqlConnection conn = teacherdatabase.AccessDatabase();
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand();
@@ -63,19 +63,19 @@ namespace Test.Controllers
                 string TeacherFname = (string)ResultSet["teacherfname"];
                 string TeacherLname = (string)ResultSet["teacherlname"];
                 string EmployeeNumber = (string)ResultSet["employeenumber"];
-                DateTime HireDate = (DateTime)ResultSet["hiredate"];
+                DateTime HireDate = (DateTime)ResultSet["hiredate"];//date time as seen in footer
                 decimal Salary = (decimal)ResultSet["salary"];
 
-                NewTeacher.teacherid = TeacherId;
-                NewTeacher.teacherfname = TeacherFname;
-                NewTeacher.teacherlname = TeacherLname;
-                NewTeacher.employeenumber = EmployeeNumber;
-                NewTeacher.hireDate = HireDate;
-                NewTeacher.salary = Salary;
+                FindTeacher.teacherid = TeacherId;
+                FindTeacher.teacherfname = TeacherFname;
+                FindTeacher.teacherlname = TeacherLname;
+                FindTeacher.employeenumber = EmployeeNumber;
+                FindTeacher.hireDate = HireDate;
+                FindTeacher.salary = Salary;
 
             }
 
-            return NewTeacher;
+            return FindTeacher;
 
         }
     }

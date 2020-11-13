@@ -24,9 +24,9 @@ namespace Test.Controllers
         public ActionResult Show(int id)
         {
             TeacherDataController controller = new TeacherDataController();
-            Teacher NewTeacher = controller.FindTeacher(id);
+            Teacher FindTeacher = controller.FindTeacher(id);
 
-            return View(NewTeacher);//view of show. find teacher based on id
+            return View(FindTeacher);//view of show. find teacher based on id
         }
             
         

@@ -7,8 +7,12 @@
 
 <h2>List</h2>
 <!-- a loop that goes and shows every teacher. make the name a link to the individuals info page-->
-@foreach(var teacher in Model){
+@foreach (var teacher in Model)
+{
     <div>
         <a href="/teacher/show/@teacher.teacherid">@teacher.teacherfname @teacher.teacherlname</a>
+
     </div>
+
 }
+<iframe src="https://giphy.com/embed/MXM5QQ3jY7WmcmPwTI" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/GEICO-sloth-tada-geico-MXM5QQ3jY7WmcmPwTI">via GIPHY</a></p>
