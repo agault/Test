@@ -4,7 +4,32 @@
     ViewBag.Title = "Show";
 }
 <!--Use the models to get the info from our db-->
+<style>
+    /*Set deletion and nav links in show teacher*/
+    .navlink {
+        margin: 25px;
+        text-decoration: none;
+    }
+
+    .dellink {
+        margin:25px;
+        text-decoration: none;
+    }
+
+    .dellink:hover {
+        color: red;
+        text-decoration: none;
+    }
+</style>
+
+
+
 <h2>Show</h2>
+<div>
+    <a class="navlink" href="/Teacher/List">Back to Teachers</a>
+    <a class="dellink" href="/Teacher/DeleteConfirm/@Model.teacherid">Delete Teacher</a>
+</div>
+
 <p>First Name: </p><p>@Model.teacherfname</p>
 <p>Last Name: </p><p>@Model.teacherlname</p>
 <p>Teacherid: </p><p>@Model.teacherid</p>
@@ -13,4 +38,4 @@
 <p>Salary per Hour: </p><p>@Model.salary</p>
 
 
-<iframe src="https://giphy.com/embed/12NUbkX6p4xOO4" width="480" height="440" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/shia-labeouf-12NUbkX6p4xOO4">via GIPHY</a></p>
+

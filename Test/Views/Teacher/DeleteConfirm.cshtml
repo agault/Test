@@ -1,0 +1,31 @@
+﻿@model Test.Models.Teacher
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+<style>
+    .button-confirm {
+        background-color: indianred;
+        color: antiquewhite;
+        border: none;
+        border-radius: 6px;
+        box-shadow: none;
+
+    }
+        .button-confirm:hover {
+            background-color: red;
+            transform: translate(1px, 5px);
+        }
+</style>
+<div id="containershow">
+    <a class="navlink" href="/Teacher/Show/@Model.teacherid">Cancel</a>
+    <h2>Are you sure you would like to delete @Model.teacherfname @Model.teacherlname?</h2>
+    <p> This action cannot be undone.</p>
+    <div>
+        <form method="POST" action="/Teacher/Delete/@Model.teacherid">
+            <button class="button-confirm">Confirm Delete</button>
+        </form>
+       
+
+    </div>
+</div>
+

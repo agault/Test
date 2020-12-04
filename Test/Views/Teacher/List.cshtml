@@ -3,9 +3,15 @@
 @{
     ViewBag.Title = "List";
 }
-<!--Frankly still don't understand ViewBag-->
+<!--Frankly still don't understand ViewBag i saw it in the video and it worked! Woo-->
 
 <h2>List</h2>
+<a class="navlink" href="/Teacher/New">Add New Teacher</a>
+<form action="/Teacher/List" method="GET">
+    <input type="text" name="SearchKey" />
+    <input type="submit" value="Search"/>
+
+</form>
 <!-- a loop that goes and shows every teacher. make the name a link to the individuals info page-->
 @foreach (var teacher in Model)
 {

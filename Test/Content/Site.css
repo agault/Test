@@ -15,3 +15,21 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*Set deletion and nav links in show teacher*/
+.navlink{
+    float:right;
+    text-decoration:none;
+}
+.dellink {
+    float: left;
+    text-decoration: none;
+}
+.dellink:hover {
+    color: red;
+    text-decoration: none;
+}
+.nav{
+    overflow:hidden;
+    margin-bottom:30px
+}
