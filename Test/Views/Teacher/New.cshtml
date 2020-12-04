@@ -4,7 +4,6 @@
 }
 
 <h2>New Teacher</h2>
-@* *@
 
 <form method="POST" action="/Teacher/Create">
     <div>
@@ -15,6 +14,19 @@
         <label for="teacherlname">Teacher's Last Name:</label>
         <input type="text" id="teacherlname" name="teacherlname" />
     </div>
+    @*  This wouldn't work but the form looked good!'
+        <div>
+            <label for="employeenumber">Employee ID Number:</label>
+            <input type="text" id="employeenumber" name="employeenumber" />
+        </div>
+        <div>
+            <label for="hireDate">Hire Date:</label>
+            <input type="date" id="hireDate" name="hireDate" />
+        </div>
+        <div>
+            <label for="salary">Salary:</label>
+            <input type="number" id="salary" name="salary" />
+        </div> *@
     <div>
         <input type="submit" value="Create Teacher" />
     </div>

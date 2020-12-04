@@ -130,7 +130,7 @@ namespace Test.Controllers
             cmd.CommandText = "insert into teachers (teacherfname, teacherlname) values(@teacherfname, @teacherlname)";
             cmd.Parameters.AddWithValue("@teacherfname", NewTeacher.teacherfname);
             cmd.Parameters.AddWithValue("@teacherlname", NewTeacher.teacherlname);
-           
+            ///cmd.Parameters.AddWithValue("@salary", NewTeacher.salary);<-- I know I add them like this and add them to the above sql statement but it kept throwing errors on line 41-43
             cmd.Prepare();
 
             cmd.ExecuteNonQuery();

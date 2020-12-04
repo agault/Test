@@ -58,6 +58,7 @@ namespace Test.Controllers
             Teacher NewTeacher = new Teacher();
             NewTeacher.teacherfname = teacherfname;
             NewTeacher.teacherlname = teacherlname;
+            /// I tried passing to Create(as DateTime hireDate, decimal salary, string employeenumber)
             //NewTeacher.employeenumber = employeenumber;
             //NewTeacher.hireDate = hireDate;
             //NewTeacher.salary = salary;
