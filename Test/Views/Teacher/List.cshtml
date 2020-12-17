@@ -4,9 +4,20 @@
     ViewBag.Title = "List";
 }
 <!--Frankly still don't understand ViewBag i saw it in the video and it worked! Woo-->
-
+<style>
+    h2{
+       padding-top: 50px;
+    }
+    form{
+        text-align:right;
+        padding-top:10px;
+    }
+   iframe{
+       margin-top:20px;
+   }
+</style>
 <h2>List</h2>
-<a class="navlink" href="/Teacher/New">Add New Teacher</a>
+<a class="navlink" href="/Teacher/New">Add New Teacher</a><br>
 <form action="/Teacher/List" method="GET">
     <input type="text" name="SearchKey" />
     <input type="submit" value="Search"/>
@@ -21,4 +32,4 @@
     </div>
 
 }
-<iframe src="https://giphy.com/embed/MXM5QQ3jY7WmcmPwTI" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/GEICO-sloth-tada-geico-MXM5QQ3jY7WmcmPwTI">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/MXM5QQ3jY7WmcmPwTI" width="240" height="240" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/GEICO-sloth-tada-geico-MXM5QQ3jY7WmcmPwTI">via GIPHY</a></p>

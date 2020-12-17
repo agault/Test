@@ -15,17 +15,24 @@
             background-color: red;
             transform: translate(1px, 5px);
         }
-</style>
-<div id="containershow">
-    <a class="navlink" href="/Teacher/Show/@Model.teacherid">Cancel</a>
-    <h2>Are you sure you would like to delete @Model.teacherfname @Model.teacherlname?</h2>
-    <p> This action cannot be undone.</p>
-    <div>
-        <form method="POST" action="/Teacher/Delete/@Model.teacherid">
-            <button class="button-confirm">Confirm Delete</button>
-        </form>
-       
+    #containershow{
+        padding-top: 20px;
 
-    </div>
-</div>
+    }
+    .navlink{
+        padding-top:20px;
+    }
+    </style>
+    <div id="containershow" >
+    <a class="navlink" href="/Teacher/Show/@Model.teacherid" > Cancel</a >
+    <h2 > Are you sure you would like to delete @Model.teacherfname @Model.teacherlname ?</h2 >
+    <p > This action cannot be undone.</p >
+    <div >
+    <form method="POST" action="/Teacher/Delete/@Model.teacherid" >
+    <button class="button-confirm" > Confirm Delete</button >
+    </form >
+
+
+    </div >
+    </div >
 
