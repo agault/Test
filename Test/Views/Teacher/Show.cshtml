@@ -9,17 +9,20 @@
     .navlink {
         margin: 25px;
         text-decoration: none;
+        float:right
     }
 
     .dellink {
-        margin:25px;
+        margin: 25px;
         text-decoration: none;
+        float: right
     }
 
-    .dellink:hover {
-        color: red;
-        text-decoration: none;
-    }
+        .dellink:hover {
+            color: red;
+            text-decoration: none;
+            float: right;
+        }
 </style>
 
 
@@ -28,6 +31,7 @@
 <div>
     <a class="navlink" href="/Teacher/List">Back to Teachers</a>
     <a class="dellink" href="/Teacher/DeleteConfirm/@Model.teacherid">Delete Teacher</a>
+    <a class="navlink" href="/Teacher/Update/@Model.teacherid">Update</a>
 </div>
 
 <p>First Name: </p><p>@Model.teacherfname</p>

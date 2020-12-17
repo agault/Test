@@ -24,7 +24,8 @@ namespace Test.Models
                     + "; user = " + User
                     + "; database = " + Database
                     + "; port = " + Port
-                    + "; password = " + Password;
+                    + "; password = " + Password
+                    + "; convert zero datetime = True";
             }
         }
         public MySqlConnection AccessDatabase()

@@ -14,7 +14,7 @@ namespace Test.Controllers
 
     public class TeacherDataController : ApiController
     {
-        private SchoolDbContext teacherdatabase = new SchoolDbContext();
+        public SchoolDbContext teacherdatabase = new SchoolDbContext();
         //api/TeacherData/ListTeachers
         [HttpGet]
         [Route("api/TeacherData/ListTeachers/{SearchKey?}")]
@@ -40,18 +40,18 @@ namespace Test.Controllers
                 int TeacherId = (int)ResultSet["teacherid"];
                 string AuthorFname = (string)ResultSet["teacherfname"];
                 string AuthorLname = (string)ResultSet["teacherlname"];
-                //string EmployeeNumber = (string)ResultSet["employeenumber"];
-                //DateTime HireDate = (DateTime)ResultSet["hiredate"];//date time as seen in footer
-                //decimal Salary = ResultSet.GetDecimal(ResultSet.GetOrdinal("salary"));
+                string EmployeeNumber = (string)ResultSet["employeenumber"];
+                DateTime HireDate = (DateTime)ResultSet["hiredate"]; ;//date time as seen in footer
+                decimal Salary = (decimal)ResultSet["salary"];
 
 
                 Teacher FindTeacher = new Teacher();
                 FindTeacher.teacherid = TeacherId;
                 FindTeacher.teacherfname = AuthorFname;
                 FindTeacher.teacherlname = AuthorLname;
-                //FindTeacher.employeenumber = EmployeeNumber;
-                //FindTeacher.hireDate = HireDate;
-                //FindTeacher.salary = Salary;
+                FindTeacher.employeenumber = EmployeeNumber;
+                FindTeacher.hireDate = HireDate;
+                FindTeacher.salary = Salary;
 
                 Teachers.Add(FindTeacher);
             }
@@ -74,16 +74,16 @@ namespace Test.Controllers
                 int TeacherId = (int)ResultSet["teacherid"];
                 string TeacherFname = (string)ResultSet["teacherfname"];
                 string TeacherLname = (string)ResultSet["teacherlname"];
-                //string EmployeeNumber = (string)ResultSet["employeenumber"];
-                //DateTime HireDate = (DateTime)ResultSet["hiredate"];//date time as seen in footer
-                //decimal Salary = ResultSet.GetDecimal( ResultSet.GetOrdinal( "salary" ) );
+                string EmployeeNumber = (string)ResultSet["employeenumber"];
+                DateTime HireDate = (DateTime)ResultSet["hiredate"];//date time as seen in footer
+                decimal Salary = (decimal)ResultSet["salary"];
 
                 FindTeacher.teacherid = TeacherId;
                 FindTeacher.teacherfname = TeacherFname;
                 FindTeacher.teacherlname = TeacherLname;
-                //FindTeacher.employeenumber = EmployeeNumber;
-                //FindTeacher.hireDate = HireDate;
-                //FindTeacher.salary = Salary;
+                FindTeacher.employeenumber = EmployeeNumber;
+                FindTeacher.hireDate = HireDate;
+                FindTeacher.salary = Salary;
 
             }
 
@@ -94,7 +94,7 @@ namespace Test.Controllers
         /// POst Request for deletion
         /// <example> POST : /api/TeacherData/DeleteTeacher/2</example>
         /// </summary>
-        /// <param name="id"></param>
+        /// 
         [HttpPost]
         //[Route("")]<--- doesent ned to be specified as we are following the action convention
         public void DeleteTeacher(int id)//Deletes teacher permanently
@@ -127,10 +127,36 @@ namespace Test.Controllers
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand();
             
-            cmd.CommandText = "insert into teachers (teacherfname, teacherlname) values(@teacherfname, @teacherlname)";
+            cmd.CommandText = "insert into teachers (teacherfname, teacherlname, employeenumber, hiredate, salary) values(@teacherfname, @teacherlname, @employeenumber, @hiredate, @salary)";
             cmd.Parameters.AddWithValue("@teacherfname", NewTeacher.teacherfname);
             cmd.Parameters.AddWithValue("@teacherlname", NewTeacher.teacherlname);
-            ///cmd.Parameters.AddWithValue("@salary", NewTeacher.salary);<-- I know I add them like this and add them to the above sql statement but it kept throwing errors on line 41-43
+            cmd.Parameters.AddWithValue("@employeenumber", NewTeacher.employeenumber);
+            cmd.Parameters.AddWithValue("@hiredate", NewTeacher.hireDate);
+            cmd.Parameters.AddWithValue("@salary", NewTeacher.salary);
+            
+
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+        public void UpdateTeacher(int id, [FromBody]Teacher TeacherInfo)
+        {
+            MySqlConnection conn = teacherdatabase.AccessDatabase();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = "update teachers set teacherfname=@teacherfname, teacherlname=@teacherlname, employeenumber=@employeenumber, hiredate=@hiredate, salary=@salary where teacherid=@TeacherId";
+            cmd.Parameters.AddWithValue("@teacherfname", TeacherInfo.teacherfname);
+            cmd.Parameters.AddWithValue("@teacherlname", TeacherInfo.teacherlname);
+            cmd.Parameters.AddWithValue("@employeenumber", TeacherInfo.employeenumber);
+            cmd.Parameters.AddWithValue("@hiredate", TeacherInfo.hireDate);
+            cmd.Parameters.AddWithValue("@salary", TeacherInfo.salary);
+            cmd.Parameters.AddWithValue("@TeacherId", id);
+
+
             cmd.Prepare();
 
             cmd.ExecuteNonQuery();
